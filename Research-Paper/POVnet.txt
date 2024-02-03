@@ -1,0 +1,20 @@
+Semantic Layout Generator (SLG):
+
+A U-Net-based SLG, G layout, predicts detailed semantic segmentation of the image based on neutral garment images, initial layouts, and poses.
+Training involves pairs of neutral garment images and images of models wearing that garment, guided by pixel-wise cross-entropy loss and LSGAN loss.
+
+Multi-Warp Garment Generator (MGG): The Warping Module:
+
+The MGG, G garment, includes a warper and an inpainting module.
+The warper aligns the garment image with the semantic layout using multiple coordinated warps, controlled by distance transform features.
+The inpainting module generates the final image using warps, predicted semantic layout, skin color, and an incomplete model image.
+
+Multi-Warp Garment Generator (MGG): The Inpainting Module:
+
+The inpainting module is trained using cascade loss, L1 loss, perceptual loss, and Spectral Norm GAN with hinge loss.
+Modifications from the original OVNet, such as excluding garment types during training, lead to significant improvements.
+
+Residual Enhancement:
+
+Residual enhancement ensures generated images show garment detail at the highest resolution.
+Simple and end-to-end training of residual enhancement are introduced, allowing for accurate high-resolution garment images without retraining the entire network.
